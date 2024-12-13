@@ -70,7 +70,7 @@
         }
 
         /* Button styling */
-        #toggleButton {
+        #toggleButton, #logoutButton {
             margin-top: 30px;
             padding: 10px 20px;
             font-size: 1em;
@@ -80,9 +80,10 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-right: 10px;
         }
 
-        #toggleButton:hover {
+        #toggleButton:hover, #logoutButton:hover {
             background-color: #45a049;
         }
 
@@ -354,10 +355,17 @@
             await fetchHistoricalData(startDate, endDate);
         }
 
+        // Hàm đăng xuất
+        function logout() {
+            // Chuyển hướng đến trang đăng nhập
+            window.location.href = 'login.html'; // Thay 'login.html' bằng trang đăng nhập của bạn
+        }
+
         window.onload = function() {
             startAutoUpdate();
             document.getElementById('toggleButton').addEventListener('click', toggleTable);
             document.getElementById('filterButton').addEventListener('click', filterData);
+            document.getElementById('logoutButton').addEventListener('click', logout);
         };
     </script>
 </head>
@@ -389,7 +397,10 @@
     </div>
 
     <!-- Nút để hiển thị bảng dữ liệu -->
-    <button id="toggleButton">Hiển thị danh sách</button>
+    <div style="margin-top: 30px;">
+        <button id="toggleButton">Hiển thị danh sách</button>
+        <button id="logoutButton">Đăng xuất</button>
+    </div>
 
     <!-- Bảng dữ liệu -->
     <table id="dataTable">
